@@ -2,21 +2,25 @@ import { Component } from '@angular/core';
 import { 
   Firestore,
   collection,
-  addDoc
+  addDoc,
+  collectionData
  } from '@angular/fire/firestore';
-
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'budget-app';
+  tableData!: Observable<any>;
 
-  constructor(private db:Firestore) { }
+  constructor(private db:Firestore) {
+    this.readData();
+   }
 
   addData(f: any) {
-    console.log(f.value);
     const collectionInstance = collection(this.db, 'users');
     console.log(collectionInstance);
     addDoc(collectionInstance, f.value)
@@ -28,5 +32,15 @@ export class AppComponent {
     }
     );
     console.log('Data added');
+  }
+  readData() {
+    const collectionInstance = collection(this.db, 'users');
+    /*
+    collectionData(collectionInstance)
+    .subscribe(val => {
+      console.log(val);
+    });
+    */
+    this.tableData = collectionData(collectionInstance);
   }
 }
