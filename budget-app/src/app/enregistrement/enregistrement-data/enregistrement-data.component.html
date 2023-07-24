@@ -1,0 +1,8 @@
+<ul>
+    <li *ngFor="let record of tableData | async">
+      {{ record.note }} - {{ record.montant }} - {{ record.beneficiaire }} -
+      {{ record.date }} - {{ record.time }}
+      <!--<button (click)="updateData(record.id)">Edit</button>-->
+      <button (click)="deleteData(record.id)">Delete</button>
+    </li>
+  </ul>

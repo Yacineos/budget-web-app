@@ -1,15 +1,2 @@
-<form #f="ngForm" (ngSubmit)="addData(f)">
-  <input type="text" name="name" placeholder="Enter your name" ngModel>
-  <br>
-  <input type="number" name="age" placeholder="Enter your age" ngModel>
-  <br>
-  <input type="password" name="password" placeholder="Enter your email" ngModel>
-  <br>
-  <button type="submit">Submit</button>
-</form>
-<ul>
-  <li *ngFor="let item of tableData |async">
-    {{item.name}} {{item.age}} {{item.password}}
-  </li>
-</ul>
+
 <router-outlet></router-outlet>

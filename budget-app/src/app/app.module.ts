@@ -7,10 +7,16 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
+import { AddRecordComponent } from './enregistrement/add-record/add-record.component';
+import { ModifyRecordComponent } from './enregistrement/modify-record/modify-record.component';
+import { EnregistrementDataComponent } from './enregistrement/enregistrement-data/enregistrement-data.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddRecordComponent,
+    ModifyRecordComponent,
+    EnregistrementDataComponent
   ],
   imports: [
     BrowserModule,

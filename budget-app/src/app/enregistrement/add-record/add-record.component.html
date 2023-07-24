@@ -1,0 +1,18 @@
+<form #f="ngForm" (ngSubmit)="addData(f)">
+  <input type="radio" id="revenue" name="nature" value="revenue" ngModel/>
+  <label for="revenue">revenue</label>
+  <br />
+  <input type="radio" id="depense" name="nature" value="depense" ngModel/>
+  <label for="depense">dépense</label>
+  <br />
+  <input type="text" name="note" placeholder="Note" ngModel />
+  <br />
+  <input type="number" name="montant" min="0" placeholder="Montant" ngModel />
+  <br />
+  <input type="text" name="beneficiaire" placeholder="Bénéficiaire" ngModel />
+  <br />
+  <input type="date" name="date" ngModel />
+  <input type="time" name="time" ngModel />
+  <br />
+  <button type="submit">Submit</button>
+</form>
