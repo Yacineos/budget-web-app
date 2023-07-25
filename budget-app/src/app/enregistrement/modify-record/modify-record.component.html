@@ -1,12 +1,12 @@
 <form #f="ngForm" (ngSubmit)="modifyData(f)">
-    <input type="text" name="note" placeholder="Note" ngModel>
-    <br>
-    <input type="number" name="montant" min="0" placeholder="Montant" ngModel>
-    <br>
-    <input type="text" name="beneficiaire" placeholder="Bénéficiaire" ngModel>
-    <br>
-    <input type="date" name="date" ngModel>
-    <input type="time" name="time" ngModel>
-    <br>
-    <button type="submit">Submit</button>
-  </form>
+  <input type="text" name="note" placeholder="Note" [(ngModel)]="recordData.note">
+  <br>
+  <input type="number" name="montant" min="0" placeholder="Montant" [(ngModel)]="recordData.montant" >
+  <br>
+  <input type="text" name="beneficiaire" placeholder="Bénéficiaire" [(ngModel)]="recordData.beneficiaire" >
+  <br>
+  <input type="date" name="date" [(ngModel)]="recordData.date" >
+  <input type="time" name="time" [(ngModel)]="recordData.time" >
+  <br>
+  <button type="submit">Modify</button>
+</form>

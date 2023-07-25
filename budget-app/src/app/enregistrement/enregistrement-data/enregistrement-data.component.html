@@ -1,8 +1,12 @@
-<ul>
+<button *ngIf="showAdd || showModify" (click)="showDataButton()">return</button>
+<button *ngIf="!showAdd && !showModify" (click)="showAddButton()">add</button>
+<app-add-record *ngIf="showAdd"></app-add-record>
+<app-modify-record *ngIf="showModify" [recordData]="selectedRecordData"></app-modify-record>
+<ul *ngIf="!showAdd && !showModify">
     <li *ngFor="let record of tableData | async">
-      {{ record.note }} - {{ record.montant }} - {{ record.beneficiaire }} -
-      {{ record.date }} - {{ record.time }}
-      <!--<button (click)="updateData(record.id)">Edit</button>-->
+      {{record.nature}} / {{ record.note }} / {{ record.montant }} / {{ record.beneficiaire }} /
+      {{ record.date }} / {{ record.time }}
+      <button (click)="updateData(record)">Edit</button>
       <button (click)="deleteData(record.id)">Delete</button>
     </li>
   </ul>

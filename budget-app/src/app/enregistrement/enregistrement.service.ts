@@ -15,6 +15,10 @@ import {
 
 export class EnregistrementService {
 
+  private f : any ;
+  showAdd: boolean = false;
+  showModify: boolean = false;
+
   constructor(private db:Firestore) { }
 
   addData(f: any) {

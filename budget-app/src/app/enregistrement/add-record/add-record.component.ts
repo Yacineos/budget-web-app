@@ -24,6 +24,8 @@ export class AddRecordComponent {
    }
 
   addData(f: any) {
+    if(f.value.nature=="depense")
+    f.value.montant = -f.value.montant;
     this.enregistrementService.addData(f);
   }
   updateData(id: string ) {

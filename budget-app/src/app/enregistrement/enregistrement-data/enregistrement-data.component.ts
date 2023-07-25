@@ -10,7 +10,9 @@ import { EnregistrementService } from '../enregistrement.service';
 export class EnregistrementDataComponent {
 
   tableData!: Observable<any>;
-
+  showAdd: boolean = false;
+  showModify: boolean = false;
+  selectedRecordData : any;
   constructor(private enregistrementService: EnregistrementService) { 
     this.readData();
   }
@@ -21,4 +23,16 @@ export class EnregistrementDataComponent {
   deleteData(id: string) {
     this.enregistrementService.deleteData(id);
   }
+  updateData(record: any) {
+    this.selectedRecordData = record;
+    this.showModify = !this.showModify;
+  }
+  showAddButton(){
+    this.showAdd = !this.showAdd;
+  }
+  showDataButton(){
+    this.showAdd = false;
+    this.showModify = false;
+  }
+  
 }
