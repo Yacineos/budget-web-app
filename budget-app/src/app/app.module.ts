@@ -10,20 +10,26 @@ import { FormsModule } from '@angular/forms';
 import { AddRecordComponent } from './enregistrement/add-record/add-record.component';
 import { ModifyRecordComponent } from './enregistrement/modify-record/modify-record.component';
 import { EnregistrementDataComponent } from './enregistrement/enregistrement-data/enregistrement-data.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddRecordComponent,
     ModifyRecordComponent,
-    EnregistrementDataComponent
+    EnregistrementDataComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

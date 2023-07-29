@@ -1,10 +1,21 @@
 <form #f="ngForm" (ngSubmit)="addData(f)">
-  <input type="radio" id="revenue" name="nature" value="revenue" ngModel/>
-  <label for="revenue">revenue</label>
-  <br />
-  <input type="radio" id="depense" name="nature" value="depense" ngModel/>
+  <input type="radio" id="depense" name="nature" value="depense" [(ngModel)]="selectedOption" ngModel/>
   <label for="depense">dépense</label>
   <br />
+  <input type="radio" id="revenue" name="nature" value="revenue" [(ngModel)]="selectedOption" ngModel/>
+  <label for="revenue">revenue</label>
+  <br />
+  <input type="radio" id="tansfert" name="nature" value="transfert" [(ngModel)]="selectedOption" ngModel/>
+  <label for="depense">transfert</label>
+  <br />
+  <div [hidden]="selectedOption !=='transfert'">
+    <label for="from">Select an option:</label>
+    <select name="dropdownList" id="dropdownList">
+      <option ngFor="let bank from bankAccounts">this.bank.</option>
+
+    </select>
+    
+  </div>
   <input type="text" name="note" placeholder="Note" ngModel />
   <br />
   <input type="number" name="montant" min="0" placeholder="Montant" ngModel />

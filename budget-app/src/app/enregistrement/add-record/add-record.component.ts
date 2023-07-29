@@ -18,6 +18,7 @@ import { EnregistrementService } from '../enregistrement.service';
 })
 export class AddRecordComponent {
   
+  selectedOption: string = "depense";
 
   constructor(private db:Firestore , private enregistrementService:EnregistrementService) {
    
