@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import { GoogleAuthProvider } from "firebase/auth";
 
 @Injectable({
@@ -7,25 +8,18 @@ import { GoogleAuthProvider } from "firebase/auth";
 })
 export class AuthService {
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(private afAuth: AngularFireAuth , private router:Router) { }
   
-  async signInWithGoogle() {
-    try {
-      const provider = new GoogleAuthProvider();
-      await this.afAuth.signInWithPopup(provider);
-      // Successful login, you can redirect or perform other actions here.
-    } catch (error) {
-      // Handle errors here.
+   signInWithGoogle() {
+    return this.afAuth.signInWithPopup(new GoogleAuthProvider()).then((result) => {
+      this.router.navigate(['/add']);
+      localStorage.setItem('user',JSON.stringify(result.user?.uid));
+      console.log(result);
     }
-  }
-
-  async signOut() {
-    try {
-      await this.afAuth.signOut();
-      // Successful sign-out, you can redirect or perform other actions here.
-    } catch (error) {
-      // Handle errors here.
-    }
+    ).catch((error) => {
+      alert(error.message);
+    } 
+    );
   }
 
 
