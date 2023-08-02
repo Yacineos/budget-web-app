@@ -20,4 +20,7 @@ export class ModifyRecordComponent {
     this.enregitrementData.showModify = false;
   }
 
+  getCurrentUser(){
+    this.enregistrementService.getCurrentUser();
+  }
 }

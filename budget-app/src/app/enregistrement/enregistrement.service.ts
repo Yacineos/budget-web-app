@@ -8,6 +8,8 @@ import {
     updateDoc,
       deleteDoc
    } from '@angular/fire/firestore';
+import { AuthService } from '../auth/auth.service';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
    @Injectable({
     providedIn: 'root'
@@ -19,12 +21,15 @@ export class EnregistrementService {
   showAdd: boolean = false;
   showModify: boolean = false;
 
-  constructor(private db:Firestore) { }
+  constructor(private db:Firestore, private authService:AuthService) { }
 
-  addData(f: any) {
+  async addData(f: any) {
     const collectionInstance = collection(this.db, 'enregistrement');
-    console.log(collectionInstance);
-    addDoc(collectionInstance, f.value)
+    const uid = await this.authService.getCurrentUser();
+    console.log(uid);
+    const fData = f.value;  
+    const data = {fData , uid};
+    addDoc(collectionInstance, data)
     .then(() => {
       console.log('Document successfully written!');
     })
@@ -50,6 +55,10 @@ export class EnregistrementService {
     const collectionInstance = collection(this.db, 'enregistrement');
     const documentInstance = doc(collectionInstance, id);
     updateDoc(documentInstance, f.value);
+  }
+
+  getCurrentUser(){
+    return this.authService.getCurrentUser();
   }
   
 }

@@ -15,5 +15,11 @@ export class LoginComponent {
  signInWithGoogle() {
     this.authService.signInWithGoogle();
   }
+  logout(){
+    this.authService.logout();
+  }
+  currentUser(){
+    this.authService.getCurrentUser();
+  }
 }
 

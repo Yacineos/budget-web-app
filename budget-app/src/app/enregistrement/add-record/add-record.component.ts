@@ -10,6 +10,7 @@ import {
  } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { EnregistrementService } from '../enregistrement.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-add-record',
@@ -20,7 +21,7 @@ export class AddRecordComponent {
   
   selectedOption: string = "depense";
 
-  constructor(private db:Firestore , private enregistrementService:EnregistrementService) {
+  constructor(private db:Firestore , private enregistrementService:EnregistrementService ) {
    
    }
 
@@ -35,5 +36,8 @@ export class AddRecordComponent {
 
   deleteData(id: string) {
     
+  }
+  getCurrentUser(){
+    this.enregistrementService.getCurrentUser();
   }
 }

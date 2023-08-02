@@ -34,5 +34,8 @@ export class EnregistrementDataComponent {
     this.showAdd = false;
     this.showModify = false;
   }
+  getCurrentUser(){
+    this.enregistrementService.getCurrentUser();
+  }
   
 }
